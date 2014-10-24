@@ -11,87 +11,59 @@ Table of contents
 
 
 # 0. Basic Info
-
 * Sysadmin page: [http://okf.fi/sysadmin/](http://fi.okfn.org/sysadmin/)
-
 * Contact email: [sysadmin@okf.fi](mailto:sysadmin@okf.fi)
-
 * Slack [https://okffi.slack.com/messages/sysadmin](https://okffi.slack.com/messages/sysadmin)
-
 * FB-chat for sysadmins <no link - ask Tarmo to add> (is being phased out)
-
 * User rights request form [http://bit.ly/okffi_user_rights](http://bit.ly/okffi_user_rights)
-
 * Old documentation in Gdocs [http://okf.fi/server](http://okf.fi/server)
 
 ## Main Production Server AVOHOITO
-
 avohoito.okf.fi
-
 159.255.193.67
 
 Responsible main admins: Tarmo Toikkanen and Jaakko Korhonen (also SUDO rights given to many people for setting up various services and sites)
 
 ubuntu 12.04
-
 1 CPU
-
 4G RAM on VMware, scalable. 13.8.2014 added 1G for troubleshooting reasons. Later +1G, now at 6GB.
-
 1 Gb peak bandwidth with 100 Mb ensured.
-
 Traffic quota outwards 500 GB per month, inwards no limit.
-
 Off-site backed up storage 100G, 9€/month, daily snapshot, weekly full replication.
-
 Management, updates etc sysadmin support by Saima.
 
 ## Dedicated Production Server TIETOPYYNTO
-
 tietopyynto.fi
-
 159.255.193.72
-
 Responsible main admins: Tomi Toivio
-
 ubuntu 12.04
-
 1 CPU
-
 3G RAM on VMware, scalable. 13.8.2014 added 1G for troubleshooting reasons.
-
 1 Gb peak bandwidth with 100 Mb ensured.
-
 Traffic quota outwards 500 GB per month, inwards no limit.
-
 Off-site backed up storage 100G, 9€/month, daily snapshot, weekly full replication.
 
 ## Dedicated Production Server AVOKONTTI
 
 ProServer PlusPower X6 2.0
-
-   32 GB DDR3-RAM
-   AMD Opteron 3280
-   Unlimited Bandwidth
-   Software-Raid 1
-   2 x 2 TB SATA II-HDD, 7.200 rpm
+32 GB DDR3-RAM
+AMD Opteron 3280
+Unlimited Bandwidth
+Software-Raid 1
+2 x 2 TB SATA II-HDD, 7.200 rpm
 
 ## Admin Tool Info
 
 dns zones [https://pwadmin.saimanet.net/](https://pwadmin.saimanet.net/) 
-
 postfix alias [https://admmail.saimanet.net/](https://admmail.saimanet.net/) 
 
 **SMTP**
-
 smtp.saimanet.net
 
 ## Test Server Info
 
 No development or test servers as of yet. Contact [sysadmin@okf.fi](mailto:sysadmin@okf.fi) for applications. 
-
 500M RAM 13€/month. Some can be included in existing budget.
-
 Do not use Heroku, Digital Ocean or any other service if you need your servers to be managed by OKF sysadmins. We are in a phase where we consolidate the scarce resources and efforts to this one environment.
 
 # 1. Domain names
@@ -99,43 +71,26 @@ Do not use Heroku, Digital Ocean or any other service if you need your servers t
 Finnish domain names and handled by OKFFI’s own account at domain.fi. DNS is handled by Saimanet.
 
 The following domains are in our DNS management.
-
 * Directed mainly to avohoito:
-
 * avoindemokratia.fi, .net, .com
-
 * avointieto.fi
-
 * datademo.fi
-
 * datakoulu.fi
-
 * hack4.fi
-
 * okf.fi
-
 * okfn.fi
-
 * Directed to tietopyynto:
-
 * tietopyynto.fi
-
 * tietopyynto.okf.fi
-
 * Directed to ckan:
-
 * ckan.okf.fi
-
 * Not directed anywhere:
-
 * omadata.fi
 
 Some services are merely routed through our server and go to another service:
 
 * **datakoulu.fi: **[http://fi.okfn.org/datakoulu/](http://fi.okfn.org/datakoulu/)
-
 * **avoindemokratia.fi: **[http://fi.okfn.org/avoin-demokratia-esimerkit/](http://fi.okfn.org/avoin-demokratia-esimerkit/) **(**avoindemokratia.com, avoindemokratia.net)
-
 * **okf.fi:** uses the lessn service for shortlinks. In case of an unidentified shortlink, merely redirects to [http://fi.okfn.org/](http://fi.okfn.org/) which is our main web site, hosted by OKFN.
 
 Acquisition of new domains: contact [sysadmin@okf.fi](mailto:sysadmin@okf.fi) with the request, listing the domains you need, and which project will pay for the costs. Finnish .fi domains cost 50€ for 5 years, international domains cost $15/year (prices may change).
@@ -159,11 +114,8 @@ firewall with ufw
 acct accounting is installed as of 8th August 2014. It logs all user logins, issued commands, and resource usage. In case of tracking down who caused a problem, this can be useful. Some key commands to try (as root):
 
 * ac:           summarize login accounting
-
 * last:         show the people who have logged in, and when they’ve logged out
-
 * lastcomm:     show which commands have been used
-
 * sa:           summarizes process accounting
 
 NB. acct is not sufficient to prevent malicious use of granted shell privileges. It’s merely helpful in seeing who may have accidentally caused a problem in another service, while working on another one.
@@ -173,53 +125,31 @@ NB. acct is not sufficient to prevent malicious use of granted shell privileges.
 Instructions on using screen and irssi together: [http://quadpoint.org/articles/irssi/](http://quadpoint.org/articles/irssi/)
 
 Irssi, Screen
-
 Working IRC-nodes:
-
 open.ircnet.org
-
 irc.freenode.net
-
 IRCin käyttö:
-
 1.  ssh [KÄYTTÄJÄ]@okf.fi
-
 2.  screen -S irssi irssi
-
 3. Irssissä sano:
-
 /SERVER ADD -auto -network IRCnet open.ircnet.net
-
 /SERVER ADD -auto -network freenode irc.freenode.net
-
 /CHANNEL ADD -auto #OKFFI freenode
-
 /CHANNEL ADD -auto #avoindata freenode
-
 /CHANNEL ADD -auto #OKFN freenode
-
 5. irtautuminen screenistä: ctrl-a + ctrl-d (lyhyemmin sanoen: ^a^d)
-
 6. Seuraavalla kerralla paluu screeniin: screen -r (tai screen -x)
 
 ### Cron
-
 Ajastetut komennot ovat kaikkien käytettävissä. "man crontab" antaa kattavat ohjeet.
-
 Mutta oleellisesti: ajamalla komennon "crontab -e" voit muokata omaa ajastettujen komentojen listaasi. Uusi rivi, jolla olisi sisältö:
-
 `15 3 * * * cd /var/www/okf/data/FOO; git pull`
-
 ajaisi varttia yli kolme aamuyöllä FOO-kansiossa git pull-komennon, eli päivittäisi ko. kansioon aiemmin saman käyttäjän tekemän git-kloonin.
 
 ### Web server: nginx
-
 nginx is running on port 80 and is the main web server (since 2014-10-07).
-
 Folders served by nginx are mainly in /var/www.
-
 Nginx can server static content efficiently. It can also be used to serve php/perl/python powered content using fastcgi (such as php5-fpm) or special services using proxying. See examples in /etc/nginx/sites-available/.
-
 Run nginx -t after modifying configurations, so the syntax is checked. **If nginx shuts down, all our web services are down!**
 
 ### Web server: apache2 (being obsoleted!)
