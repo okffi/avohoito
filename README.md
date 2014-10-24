@@ -34,15 +34,21 @@ Management, updates etc sysadmin support by Saima.
 
 ## Dedicated Production Server TIETOPYYNTO
 [http://tietopyynto.fi](http://tietopyynto.fi)
+
 159.255.193.72
 
 Responsible main admins: Tomi Toivio
 
 ubuntu 12.04
+
 1 CPU
+
 3G RAM on VMware, scalable. 13.8.2014 added 1G for troubleshooting reasons.
+
 1 Gb peak bandwidth with 100 Mb ensured.
+
 Traffic quota outwards 500 GB per month, inwards no limit.
+
 Off-site backed up storage 100G, 9€/month, daily snapshot, weekly full replication.
 
 ## Dedicated Production Server AVOKONTTI
