@@ -260,7 +260,7 @@ nginx proxies to apache, which uses mod_perl to call the service.
 
 Admin: Tomi Toivio
 
-books.okf.fi/fi.flossmanuals.net
+[http://books.okf.fi](http://books.okf.fi)/[http://fi.flossmanuals.net](http://fi.flossmanuals.net)
 
 Päivitetään versioon 2.0 kun se ilmestyy, sitä ennen ei kannata tehdä mitään.
 
