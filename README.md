@@ -66,6 +66,16 @@ Traffic quota outwards 500 GB per month, inwards no limit.
 
 Off-site backed up storage 100G, 9€/month, daily snapshot, weekly full replication.
 
+## Dedicated Production Server AVOKONTTI
+
+ProServer PlusPower X6 2.0
+
+   32 GB DDR3-RAM
+   AMD Opteron 3280
+   Unlimited Bandwidth
+   Software-Raid 1
+   2 x 2 TB SATA II-HDD, 7.200 rpm
+
 ## Admin Tool Info
 
 dns zones [https://pwadmin.saimanet.net/](https://pwadmin.saimanet.net/) 
