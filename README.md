@@ -36,19 +36,12 @@ Management, updates etc sysadmin support by Saima.
 [http://tietopyynto.fi](http://tietopyynto.fi)
 
 159.255.193.72
-
 Responsible main admins: Tomi Toivio
-
 ubuntu 12.04
-
 1 CPU
-
 3G RAM on VMware, scalable. 13.8.2014 added 1G for troubleshooting reasons.
-
 1 Gb peak bandwidth with 100 Mb ensured.
-
 Traffic quota outwards 500 GB per month, inwards no limit.
-
 Off-site backed up storage 100G, 9€/month, daily snapshot, weekly full replication.
 
 ## Dedicated Production Server AVOKONTTI
@@ -102,6 +95,33 @@ Some services are merely routed through our server and go to another service:
 * **okf.fi:** uses the lessn service for shortlinks. In case of an unidentified shortlink, merely redirects to [http://fi.okfn.org/](http://fi.okfn.org/) which is our main web site, hosted by OKFN.
 
 Acquisition of new domains: contact [sysadmin@okf.fi](mailto:sysadmin@okf.fi) with the request, listing the domains you need, and which project will pay for the costs. Finnish .fi domains cost 50€ for 5 years, international domains cost $15/year (prices may change).
+
+# Instructions for adding new sercvices
+
+Register to Slack in https://okffi.slack.com/messages/sysadmin/, or email the following info:
+ - Service name
+ - Are you putting a service up for debug or production in this phase. avohoito.okf.fi is the production server, for development purposes temporary servers are provisioned.
+ - OKFFI responsible project or working group.
+ - Responsible technical person
+ - Source code repository
+ - Memory and data storage requirement expectations
+ - Server applications required
+ - Service address, SOMETHING.okf.fi, or own domain. OKFFI can also register domains, ask through slack or sysadmin(a)okf.fi
+ - Repository for service configuration files. We back up also service configurations to Github. There is a private repo available, if needed.
+ - Ports reserved
+ - Service url for monitoring
+
+Order a shell account http://okf.fi/server
+
+Install the services. For development purposes temporary servers are provisioned.
+
+Configure Nagios
+ - Add your shell account name to /etc/nagios3/htpasswd.conf, with different password.
+ - Add your account name to contacts.cfg
+ - Add the configuration file for your service, in /etc/nagios3/conf.d/okffi/, you can use the existing ones as template.
+
+Inform progress and issues through Slack or sysadmin(a)okf.fi
+
 
 # 2.a. Installed Services and Applications (AVOHOITO)
 
@@ -275,23 +295,16 @@ Päivitetään versioon 2.0 kun se ilmestyy, sitä ennen ei kannata tehdä mitä
 ### Rahankeräysrekisteri
 
 1. asennettu Apache CouchDB 1.5.0 ja supervisor + tarvittavat lisäpaketit
-
 2. asennettu rahankeräysrekisteri-sovellus hakemistoon /home/warmaster/WhipAroundRegistryEnvironment
-
 3. supervisor asetettu käynnistämään WarApp-sovelluksesta 2 instanssia 127.0.0.1 porteissa 8880 ja 8881 nobody-käyttäjänä
-
 4. supervisor kuuntelee http://127.0.0.1:9999 ja tunnukset löytyy conffista. Tuolta voi hallita WarApp-sovellusta ja seurata lokia.
-
 5. muokattu Apache2 lataamaan proxy_balancer moduuli
-
 6. lisätty Apache2 virtual_host konfiguraatio domaineille rahankeraysrekisteri.fi ja rahankeräysrekisteri.fi
 
 ### CKAN / Datakatalogi with datastore
 
 All documentation, discussion and issues in [https://github.com/okffi/katalogi](https://github.com/okffi/katalogi)
-
 [http://ckan.okf.fi](http://ckan.okf.fi)
-
 Running as a docker container. See instructions at [http://docs.ckan.org/en/latest/maintaining/installing/install-using-docker.html](http://docs.ckan.org/en/latest/maintaining/installing/install-using-docker.html)
 
 The containers have been created as follows:
