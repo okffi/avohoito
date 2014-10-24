@@ -1,5 +1,5 @@
 
-This is a developing documentation for OKFFI sysadmin / server related stuff. This documentation is being migrated to [https://github.com/okffi/avohoito/tree/master](https://github.com/okffi/avohoito/tree/master) as of 2014-10-24.
+This is a constantly updated documentation for OKF Finland's main server stuff.
 
 Language of choice is English, for fast documentation Finnish is OK if the other option would be no documentation at all.
 
@@ -18,11 +18,11 @@ Table of contents
 
 * Slack [https://okffi.slack.com/messages/sysadmin](https://okffi.slack.com/messages/sysadmin)
 
-* FB-chat for sysadmins <no link - ask Tarmo to add>
+* FB-chat for sysadmins <no link - ask Tarmo to add> (is being phased out)
 
 * User rights request form [http://bit.ly/okffi_user_rights](http://bit.ly/okffi_user_rights)
 
-* Gdocs [http://okf.fi/server](http://okf.fi/server)
+* Old documentation in Gdocs [http://okf.fi/server](http://okf.fi/server)
 
 ## Main Production Server AVOHOITO
 
@@ -222,15 +222,15 @@ New virtual hosts are set up in folder /etc/apache2/sites-available, by copying 
 
 1. Add the new domain name to /etc/nginx/sites-available/apache-proxy (onto the line that says "server_name", so that nginx routes requests to apache.
 
-2. a2ensite NAME
+2. `a2ensite NAME`
 
 1. Creates a symlink to sites-enabled
 
-3. apachectl -t
+3. `apachectl -t`
 
 2. Checks that the configuration syntax is correct. **Remember to do this, since an invalid configuration file can shutdown the entire web server!**
 
-4. service apache2 reload
+4. `service apache2 reload`
 
 3. Load the new configuration.
 
