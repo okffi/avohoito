@@ -305,7 +305,7 @@ $ docker start solr db ckan
 
 # 2.b. Installed services and application (TIETOPYYNTO)
 
-### Froide / Tietopyynto.fi
+### Froide [http://tietopyynto.fi](http://tietopyynto.fi)
 
 All documentation, discussion and issues in [https://github.com/okffi/tietopyynto/](https://github.com/okffi/tietopyynto/)
 
