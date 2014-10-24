@@ -122,6 +122,11 @@ Configure Nagios
 
 Inform progress and issues through Slack or sysadmin(a)okf.fi
 
+# Installed Services
+
+<em>This page is created with the <a href="http://okfnlabs.org/listify/" target="_blank">Listify -tool by the OKFN Labs</a> and the same data can bee seen at <a href="https://docs.google.com/spreadsheet/ccc?key=0Au5B9VrRkisPdFBGMlVhamJ1ZUlvMGhsTURYRjhUOEE&amp;usp=sharing" target="_blank">this Google Spreadsheet</a>.</em>
+
+<iframe src="http://okfnlabs.org/listify/embed.html?url=https%3A%2F%2Fdocs.google.com%2Fspreadsheet%2Fccc%3Fkey%3D0Au5B9VrRkisPdFBGMlVhamJ1ZUlvMGhsTURYRjhUOEE%26usp%3Dsharing" width="800" height="5000" frameborder="0"></iframe>
 
 # 2.a. Installed Services and Applications (AVOHOITO)
 
