@@ -111,7 +111,7 @@ Register to Slack in https://okffi.slack.com/messages/sysadmin/, or email the fo
  - Ports reserved
  - Service url for monitoring
 
-Order a shell account http://okf.fi/server
+Order a shell account http://okf.fi/sysadmin
 
 Install the services. For development purposes temporary servers are provisioned.
 
@@ -172,6 +172,8 @@ IRCin käyttö:
 /CHANNEL ADD -auto #OKFN freenode
 5. irtautuminen screenistä: ctrl-a + ctrl-d (lyhyemmin sanoen: ^a^d)
 6. Seuraavalla kerralla paluu screeniin: screen -r (tai screen -x)
+
+Myös Slackiin pääsee IRCin kautta: https://okffi.slack.com/account/gateways
 
 ### Cron
 Ajastetut komennot ovat kaikkien käytettävissä. "man crontab" antaa kattavat ohjeet.
