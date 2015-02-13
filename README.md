@@ -291,14 +291,6 @@ Technically, the service is done using perl, and is located in /var/www/data/gis
 
 nginx proxies to apache, which uses mod_perl to call the service.
 
-### Booktype / FLOSS Manuals (Finland)
-
-Admin: Tomi Toivio
-
-[http://books.okf.fi](http://books.okf.fi)/[http://fi.flossmanuals.net](http://fi.flossmanuals.net)
-
-Päivitetään versioon 2.0 kun se ilmestyy, sitä ennen ei kannata tehdä mitään.
-
 ### Rahankeräysrekisteri
 
 1. asennettu Apache CouchDB 1.5.0 ja supervisor + tarvittavat lisäpaketit
