@@ -36,7 +36,7 @@ Management, updates etc sysadmin support by Saima.
 [http://tietopyynto.fi](http://tietopyynto.fi)
 
 159.255.193.72
-Responsible main admins: Tomi Toivio
+Responsible main admins: 
 ubuntu 12.04
 1 CPU
 3G RAM on VMware, scalable. 13.8.2014 added 1G for troubleshooting reasons.
