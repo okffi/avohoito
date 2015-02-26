@@ -22,6 +22,13 @@ Table of contents
 avohoito.okf.fi
 159.255.193.67
 
+Check that the SSH fingerprints match on first contact:
+```
+20:e3:1c:1e:35:d0:da:8b:51:bd:45:51:81:77:07:39 (ECDSA)
+d4:2c:e0:a3:d1:5b:68:0c:1f:40:68:8c:43:d7:94:93 (RSA)
+58:20:56:9d:db:1d:f8:cf:e0:6b:46:20:cc:5e:72:b4 (DSA)
+```
+
 Responsible main admins: Tarmo Toikkanen and Jaakko Korhonen (also SUDO rights given to many people for setting up various services and sites)
 
 ubuntu 12.04
