@@ -3,18 +3,15 @@ This is a constantly updated documentation for OKF Finland's main server stuff.
 
 Language of choice is English, for fast documentation Finnish is OK if the other option would be no documentation at all.
 
-Table of contents
-
-[[TOC]]
 
 * * *
 
 
 # 0. Basic Info
+* This document: [http://okf.fi/server](http://okf.fi/server)
 * Sysadmin page: [http://okf.fi/sysadmin/](http://fi.okfn.org/sysadmin/)
 * Contact email: [sysadmin@okf.fi](mailto:sysadmin@okf.fi)
 * Slack [https://okffi.slack.com/messages/sysadmin](https://okffi.slack.com/messages/sysadmin)
-* FB-chat for sysadmins <no link - ask Tarmo to add> (is being phased out)
 * User rights request form [http://bit.ly/okffi_user_rights](http://bit.ly/okffi_user_rights)
 * Old documentation in Gdocs [http://okf.fi/server](http://okf.fi/server)
 
@@ -43,7 +40,7 @@ Management, updates etc sysadmin support by Saima.
 [http://tietopyynto.fi](http://tietopyynto.fi)
 
 159.255.193.72
-Responsible main admins: 
+Responsible main admins: UNKNOWN
 ubuntu 12.04
 1 CPU
 3G RAM on VMware, scalable. 13.8.2014 added 1G for troubleshooting reasons.
@@ -101,7 +98,11 @@ Some services are merely routed through our server and go to another service:
 * **avoindemokratia.fi: **[http://fi.okfn.org/avoin-demokratia-esimerkit/](http://fi.okfn.org/avoin-demokratia-esimerkit/) **(**avoindemokratia.com, avoindemokratia.net)
 * **okf.fi:** uses the lessn service for shortlinks. In case of an unidentified shortlink, merely redirects to [http://fi.okfn.org/](http://fi.okfn.org/) which is our main web site, hosted by OKFN.
 
-Acquisition of new domains: contact [sysadmin@okf.fi](mailto:sysadmin@okf.fi) with the request, listing the domains you need, and which project will pay for the costs. Finnish .fi domains cost 50€ for 5 years, international domains cost $15/year (prices may change).
+Acquisition of new domains:
+
+1. Check that the domain name is free and that the name does not appear in any trademark or company registers. [https://domain.fi/info/index/tietoa/useinkysytytkysymykset.html#312-NjNhOWYwZWE3YmI5ODA1MDc5NmI2NDllODU0ODE4NDU$61$-NXhyWmV6UTY5-0-aeFa6lBb2-aeFaSHQXc](More information for .fi domains.) If you're happy with a subdomain, in the form of example.okf.fi, that can be done more easily and without cost.
+
+2. Contact [sysadmin@okf.fi](mailto:sysadmin@okf.fi) with the request, listing the domains you need, and which project will pay for the costs. Finnish .fi domains cost 50€ for 5 years, international domains cost $15/year (prices may change). Also let us know where the domain's website should be. We can host Wordpress easily, other sites with some setup effort, and we can point to existing outside servers as well.
 
 # Instructions for adding new sercvices
 
@@ -129,17 +130,11 @@ Configure Nagios
 
 Inform progress and issues through Slack or sysadmin(a)okf.fi
 
-# Installed Services
-
-<em>This page is created with the <a href="http://okfnlabs.org/listify/" target="_blank">Listify -tool by the OKFN Labs</a> and the same data can bee seen at <a href="https://docs.google.com/spreadsheet/ccc?key=0Au5B9VrRkisPdFBGMlVhamJ1ZUlvMGhsTURYRjhUOEE&amp;usp=sharing" target="_blank">this Google Spreadsheet</a>.</em>
-
-<iframe src="http://okfnlabs.org/listify/embed.html?url=https%3A%2F%2Fdocs.google.com%2Fspreadsheet%2Fccc%3Fkey%3D0Au5B9VrRkisPdFBGMlVhamJ1ZUlvMGhsTURYRjhUOEE%26usp%3Dsharing" width="800" height="5000" frameborder="0"></iframe>
-
 # 2.a. Installed Services and Applications (AVOHOITO)
 
-For each service there will be service-specific system account and someone responsible for that account. System accounts will not have passwords but will be accessed through sudo.
+For each service there will be service-specific system account (if needed) and someone responsible for that account. System accounts will not have passwords but will be accessed through sudo.
 
-Components are brought to production by installing from public sources with public installation instructions. If any of these do not exist, service-specific Github repos are build by default before transferring services to production. It is advisable to develop and test new services with configuration management and batch deployment in mind.
+Components are brought to production by installing from public sources with public installation instructions. If any of these do not exist, service-specific Github repos are built before transferring services to production. It is advisable to develop and test new services with configuration management and batch deployment in mind.
 
 ## Basic services (installed)
 
@@ -160,28 +155,6 @@ acct accounting is installed as of 8th August 2014. It logs all user logins, iss
 
 NB. acct is not sufficient to prevent malicious use of granted shell privileges. It’s merely helpful in seeing who may have accidentally caused a problem in another service, while working on another one.
 
-### IRC
-
-Instructions on using screen and irssi together: [http://quadpoint.org/articles/irssi/](http://quadpoint.org/articles/irssi/)
-
-Irssi, Screen
-Working IRC-nodes:
-open.ircnet.org
-irc.freenode.net
-IRCin käyttö:
-1.  ssh [KÄYTTÄJÄ]@okf.fi
-2.  screen -S irssi irssi
-3. Irssissä sano:
-/SERVER ADD -auto -network IRCnet open.ircnet.net
-/SERVER ADD -auto -network freenode irc.freenode.net
-/CHANNEL ADD -auto #OKFFI freenode
-/CHANNEL ADD -auto #avoindata freenode
-/CHANNEL ADD -auto #OKFN freenode
-5. irtautuminen screenistä: ctrl-a + ctrl-d (lyhyemmin sanoen: ^a^d)
-6. Seuraavalla kerralla paluu screeniin: screen -r (tai screen -x)
-
-Myös Slackiin pääsee IRCin kautta: https://okffi.slack.com/account/gateways
-
 ### Cron
 Ajastetut komennot ovat kaikkien käytettävissä. "man crontab" antaa kattavat ohjeet.
 Mutta oleellisesti: ajamalla komennon "crontab -e" voit muokata omaa ajastettujen komentojen listaasi. Uusi rivi, jolla olisi sisältö:
@@ -194,29 +167,23 @@ Folders served by nginx are mainly in /var/www.
 Nginx can server static content efficiently. It can also be used to serve php/perl/python powered content using fastcgi (such as php5-fpm) or special services using proxying. See examples in /etc/nginx/sites-available/.
 Run nginx -t after modifying configurations, so the syntax is checked. **If nginx shuts down, all our web services are down!**
 
-### Web server: apache2 (being obsoleted!)
+### Web server: apache2 
 
-Apache2 can still be used to run virtual web sites, if the site requires some apache2-specific functionality.
+Apache2 can be used to run virtual web sites, if the site requires some apache2-specific functionality.
 
 Folders served by apache2 are mainly in /var/www.
 
-New virtual hosts are set up in folder /etc/apache2/sites-available, by copying an existing configuration and modifying appropriately. A new site called "NAME.conf" is taken into use like this::
+New virtual hosts are set up in folder /etc/apache2/sites-available, by copying an existing configuration and modifying appropriately. A new site called "NAME.conf" is taken into use like this:
 
 1. Add the new domain name to /etc/nginx/sites-available/apache-proxy (onto the line that says "server_name", so that nginx routes requests to apache.
 
-2. `a2ensite NAME`
+2. `a2ensite NAME` enables the new site configuration in Apache2 (you can of course manually symlink if you prefer)
 
-1. Creates a symlink to sites-enabled
+3. `apachectl -t` checks that the configuration syntax is correct. **Remember to do this, since an invalid configuration file can shutdown the entire web server!**
 
-3. `apachectl -t`
+4. `service apache2 reload` loads the new configuration.
 
-2. Checks that the configuration syntax is correct. **Remember to do this, since an invalid configuration file can shutdown the entire web server!**
-
-4. `service apache2 reload`
-
-3. Load the new configuration.
-
-If something goes wrong, do something like "a2dissite NAME" and “service apache2 restart” to get back to the preceding situation.
+If something goes wrong, do something like "a2dissite NAME" and “service apache2 restart” to get back to the preceding situation, so that the possible errors in your site configuration are out of the way.
 
 ### Blogipalvelu, Wordpress network/multisite: http://blog.okf.fi
 
@@ -244,15 +211,29 @@ service nagios3 reload
 
 To get notifications of service outages, add yourself to the contacts configuration and add you as the manager for appropriate services.
 
-## Services for the core team
+## Applications
 
-### Membership register
+### IRC
 
-The membership register must be kept private, and only accessible to the chairman and the secretary of the association. The register is hosted as a git repository in ssh://okf.fi/var/okfcore/okffi-jasenrekisteri and access to it is only given to those people who need it.
+Instructions on using screen and irssi together: [http://quadpoint.org/articles/irssi/](http://quadpoint.org/articles/irssi/)
 
-Membership applications are handled online, at [http://fi.okfn.org/membership/](http://fi.okfn.org/membership/). The form results are handled by the secretary and presented at each board meeting for approval. After approval, the new members are added to various systems, as described in the documentation included in the membership register.
+Irssi, Screen
+Working IRC-nodes:
+open.ircnet.org
+irc.freenode.net
+IRCin käyttö:
+1.  ssh [KÄYTTÄJÄ]@okf.fi
+2.  screen -S irssi irssi
+3. Irssissä sano:
+/SERVER ADD -auto -network IRCnet open.ircnet.net
+/SERVER ADD -auto -network freenode irc.freenode.net
+/CHANNEL ADD -auto #OKFFI freenode
+/CHANNEL ADD -auto #avoindata freenode
+/CHANNEL ADD -auto #OKFN freenode
+5. irtautuminen screenistä: ctrl-a + ctrl-d (lyhyemmin sanoen: ^a^d)
+6. Seuraavalla kerralla paluu screeniin: screen -r (tai screen -x)
 
-## Applications (installed)
+Myös Slackiin pääsee IRCin kautta: https://okffi.slack.com/account/gateways
 
 ### URL shortener: Lessn More
 
