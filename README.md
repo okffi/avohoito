@@ -219,6 +219,13 @@ To get notifications of service outages, add yourself to the contacts configurat
 
 ## Applications
 
+### RT, Request Tracker 4
+
+RT is used for OKFFI's helpdesk functions. It runs in [http://rt.okf.fi](http://rt.okf.fi).
+Accounts are given to people who need to handle tickets.
+You may request a queue in RT if you need it for something.
+We can also forward okf.fi mail aliases directly to RT queues (like talous@okf.fi which goes to the finances queue).
+
 ### IRC
 
 Instructions on using screen and irssi together: [http://quadpoint.org/articles/irssi/](http://quadpoint.org/articles/irssi/)
