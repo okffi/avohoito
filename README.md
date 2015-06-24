@@ -13,7 +13,6 @@ Language of choice is English, for fast documentation Finnish is OK if the other
 * Contact email: [sysadmin@okf.fi](mailto:sysadmin@okf.fi)
 * Slack [https://okffi.slack.com/messages/sysadmin](https://okffi.slack.com/messages/sysadmin)
 * User rights request form [http://bit.ly/okffi_user_rights](http://bit.ly/okffi_user_rights)
-* Old documentation in Gdocs [http://okf.fi/server](http://okf.fi/server)
 
 ## Main Production Server AVOHOITO
 avohoito.okf.fi
@@ -75,21 +74,29 @@ Do not use Heroku, Digital Ocean or any other service if you need your servers t
 
 Finnish domain names and handled by OKFFI’s own account at domain.fi. DNS is handled by Saimanet.
 
-The following domains are in our DNS management.
+The following domains are in our DNS management (updated June 2015).
+
 * Directed mainly to avohoito:
 * avoindemokratia.fi, .net, .com
 * avointieto.fi
 * datademo.fi
 * datakoulu.fi
 * hack4.fi
+* koodiaapinen.fi
+* ofc.fi, openfinlandchallenge.fi, openfinlandchallenge.com
 * okf.fi
 * okfn.fi
+* ckan.okf.fi
+
 * Directed to tietopyynto:
 * tietopyynto.fi
 * tietopyynto.okf.fi
-* Directed to ckan:
-* ckan.okf.fi
+
+* Directed to 159.255.196.4:
+* sujuvuusnavigaattori.fi, .net, .org, .com
+
 * Not directed anywhere:
+* opensauna.fi
 * omadata.fi
 
 Some services are merely routed through our server and go to another service:
@@ -106,7 +113,7 @@ Acquisition of new domains:
 
 # Instructions for adding new sercvices
 
-Register to Slack in https://okffi.slack.com/messages/sysadmin/, or email the following info:
+New services may be set up by members of OKFFI. Email the following info to sysadmin@okf.fi:
  - Service name
  - Are you putting a service up for debug or production in this phase. avohoito.okf.fi is the production server, for development purposes temporary servers are provisioned.
  - OKFFI responsible project or working group.
@@ -156,16 +163,16 @@ acct accounting is installed as of 8th August 2014. It logs all user logins, iss
 NB. acct is not sufficient to prevent malicious use of granted shell privileges. It’s merely helpful in seeing who may have accidentally caused a problem in another service, while working on another one.
 
 ### Cron
-Ajastetut komennot ovat kaikkien käytettävissä. "man crontab" antaa kattavat ohjeet.
-Mutta oleellisesti: ajamalla komennon "crontab -e" voit muokata omaa ajastettujen komentojen listaasi. Uusi rivi, jolla olisi sisältö:
+Scheduled commands can be used by all users of the server. "man crontab" gives more instructions.
+Essentially: by executing "crontab -e" you can edit your scheduled commands. A new line with the following contents:
 `15 3 * * * cd /var/www/okf/data/FOO; git pull`
-ajaisi varttia yli kolme aamuyöllä FOO-kansiossa git pull-komennon, eli päivittäisi ko. kansioon aiemmin saman käyttäjän tekemän git-kloonin.
+would run the "git pull" command in folder /var/www/okf/FOO every day, at 15 past 3 in the morning.
 
 ### Web server: nginx
 nginx is running on port 80 and is the main web server (since 2014-10-07).
 Folders served by nginx are mainly in /var/www.
 Nginx can server static content efficiently. It can also be used to serve php/perl/python powered content using fastcgi (such as php5-fpm) or special services using proxying. See examples in /etc/nginx/sites-available/.
-Run nginx -t after modifying configurations, so the syntax is checked. **If nginx shuts down, all our web services are down!**
+Run `nginx -t` after modifying configurations, so the syntax is checked. **If nginx shuts down, all our web services are down!**
 
 ### Web server: apache2 
 
@@ -183,31 +190,30 @@ New virtual hosts are set up in folder /etc/apache2/sites-available, by copying 
 
 4. `service apache2 reload` loads the new configuration.
 
-If something goes wrong, do something like "a2dissite NAME" and “service apache2 restart” to get back to the preceding situation, so that the possible errors in your site configuration are out of the way.
+If something goes wrong, do something like `a2dissite NAME` and `service apache2 restart` to get back to the preceding situation, so that the possible errors in your site configuration are out of the way.
 
-### Blogipalvelu, Wordpress network/multisite: http://blog.okf.fi
+### Blog service, Wordpress network/multisite: http://blog.okf.fi
 
-Wordpress multisite on asennettu kansioon /var/www/okf/blog. Asennus näkyy verkossa osoitteessa [http://blog.okf.fi](http://blog.okf.fi). Pyynnöstä saa itselleen blogin ylläpidettäväksi. Sille voidaan pyynnöstä antaa jokin OKF:n hallinnoima domaini tai alidomaini, tai siihen voi ohjata itse omistamansa domainin. Teemojen ja pluginien asentaminen tapahtuu superadminin toimesta, eli pyyntöjä ylläpidolle jos on tarvetta lisäteemoille tai plugineille.
+Wordpress multisite has been installed into /var/www/okf/blog. It is visible on the web at [http://blog.okf.fi](http://blog.okf.fi).
+You may request a blog to administer. It can be given a subdomain or domain controlled by OKFFI, or it can be assigned a domain owned by you.
+Themes and plugins are installed by superadmins. Contact sysadmin@okf.fi if you need these.
 
 ### Nagios monitoring
 
 Running at address [http://status.okf.fi](http://status.okf.fi)
-
 You can see the status with account "vieras". Ask the password from OKFFI core.
+To gain more access, add a username/password combination for yourself.
+Use the same username you have for shell access, and also use that as the contact name in Nagios configurations.
 
-To gain more access, add a username/password combination for yourself. Use the same 
-
-username you have for shell access, and also use that as the contact name in Nagios configurations.
-
-htpasswd /etc/nagios3/htpasswd.users USERNAME
+`htpasswd /etc/nagios3/htpasswd.users USERNAME`
 
 To add or modify monitored services, add and edit service definitions in
 
-/etc/nagios3/conf.d/okffi/
+`/etc/nagios3/conf.d/okffi/`
 
 and run
 
-service nagios3 reload
+`service nagios3 reload`
 
 To get notifications of service outages, add yourself to the contacts configuration and add you as the manager for appropriate services.
 
@@ -217,23 +223,25 @@ To get notifications of service outages, add yourself to the contacts configurat
 
 Instructions on using screen and irssi together: [http://quadpoint.org/articles/irssi/](http://quadpoint.org/articles/irssi/)
 
-Irssi, Screen
-Working IRC-nodes:
-open.ircnet.org
-irc.freenode.net
-IRCin käyttö:
-1.  ssh [KÄYTTÄJÄ]@okf.fi
-2.  screen -S irssi irssi
-3. Irssissä sano:
-/SERVER ADD -auto -network IRCnet open.ircnet.net
-/SERVER ADD -auto -network freenode irc.freenode.net
-/CHANNEL ADD -auto #OKFFI freenode
-/CHANNEL ADD -auto #avoindata freenode
-/CHANNEL ADD -auto #OKFN freenode
-5. irtautuminen screenistä: ctrl-a + ctrl-d (lyhyemmin sanoen: ^a^d)
-6. Seuraavalla kerralla paluu screeniin: screen -r (tai screen -x)
+Use the irssi client inside a screen to keep the connections alive even when you log out.
 
-Myös Slackiin pääsee IRCin kautta: https://okffi.slack.com/account/gateways
+Working IRC-nodes:
+* open.ircnet.org
+* irc.freenode.net
+
+Using IRC with irssi client:
+#.  ssh [KÄYTTÄJÄ]@okf.fi
+#.  screen -S irssi irssi
+#.  Commands to run inside irssi:
+* /SERVER ADD -auto -network IRCnet open.ircnet.net
+* /SERVER ADD -auto -network freenode irc.freenode.net
+* /CHANNEL ADD -auto #OKFFI freenode
+* /CHANNEL ADD -auto #avoindata freenode
+* /CHANNEL ADD -auto #OKFN freenode
+#. detach from screen: ctrl-a + ctrl-d (or, in a shorter notation: ^a^d)
+#. Next time, reattach the screen: `screen -r` (or `screen -x`)
+
+You can access slack through IRC: https://okffi.slack.com/account/gateways
 
 ### URL shortener: Lessn More
 
@@ -244,6 +252,9 @@ User name and password are given to people who need to create okf.fi short urls.
 ### Open ERP
 
 [http://erp.okf.fi](http://erp.okf.fi)
+
+Open ERP could be used for project management, asset tracking, and similar.
+Currently it's not widely used.
 
 ### Data web server - http://data.okf.fi
 
@@ -288,7 +299,7 @@ nginx proxies to apache, which uses mod_perl to call the service.
 5. muokattu Apache2 lataamaan proxy_balancer moduuli
 6. lisätty Apache2 virtual_host konfiguraatio domaineille rahankeraysrekisteri.fi ja rahankeräysrekisteri.fi
 
-### CKAN / Datakatalogi with datastore
+### CKAN / Datacatalog with datastore
 
 All documentation, discussion and issues in [https://github.com/okffi/katalogi](https://github.com/okffi/katalogi)
 [http://ckan.okf.fi](http://ckan.okf.fi)
@@ -296,17 +307,17 @@ Running as a docker container. See instructions at [http://docs.ckan.org/en/late
 
 The containers have been created as follows:
 
-$ docker run -d --name db ckan/postgresql
+$ `docker run -d --name db ckan/postgresql`
 
-$ docker run -d --name solr ckan/solr
+$ `docker run -d --name solr ckan/solr
 
-$ docker run -d -p 8081:80 --link db:db --link solr:solr --name ckan ckan/ckan
+$ `docker run -d -p 8081:80 --link db:db --link solr:solr --name ckan ckan/ckan`
 
 Nginx is configured to proxy the port 8081 and serve that as virtual host ckan.okf.fi.
 
 If the containers are not running, they can be started with
 
-$ docker start solr db ckan
+$ `docker start solr db ckan`
 
 * * *
 
