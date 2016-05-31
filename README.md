@@ -70,6 +70,30 @@ No development or test servers as of yet. Contact [sysadmin@okf.fi](mailto:sysad
 500M RAM 13€/month. Some can be included in existing budget.
 Do not use Heroku, Digital Ocean or any other service if you need your servers to be managed by OKF sysadmins. We are in a phase where we consolidate the scarce resources and efforts to this one environment.
 
+## Kapsi servers
+
+These servers are being rolled out and tested for suitability.
+
+### okffi-dev1.kapsi.fi
+
+4 vcpu
+4 GB memory
+25GB system disk
+200 GB data disk
+ip: 91.232.156.222, 2001:67c:1be8::222
+
+ECDSA key fingerprint is SHA256:DUCWr4Uwms82/Z+H3wh9sRuL8qAM8N7cXKmOrkbbe08.
+
+### okffi-prod1.kapsi.fi
+
+8 vcpu
+8 GB memory
+25GB system disk
+400GB data disk
+ip: 91.232.156.221, 2001:67c:1be8::221
+
+ECDSA key fingerprint is SHA256:kjFYIb3ICOWBBJg8Z8bryWB9vsM0Gu2sJ1C6UtV2xkw.
+
 # 1. Domain names
 
 Finnish domain names and handled by OKFFI’s own account at domain.fi. DNS is handled by Saimanet.
