@@ -359,4 +359,10 @@ $ `docker start solr db ckan`
 
 All documentation, discussion and issues in [https://github.com/okffi/tietopyynto/](https://github.com/okffi/tietopyynto/)
 
+# 2.c. Installed services and application (GETYOURDATA)
+
+### GetYourData [development server](http://okffi-dev1.kapsi.fi/)
+
+Documentation will be linked here once the information is on the getyourdata repo. 
+
 
