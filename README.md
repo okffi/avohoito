@@ -361,8 +361,6 @@ All documentation, discussion and issues in [https://github.com/okffi/tietopyynt
 
 # 2.c. Installed services and application (GETYOURDATA)
 
-### GetYourData [development server](http://okffi-dev1.kapsi.fi/)
+### GetYourData development server [http://okffi-dev1.kapsi.fi/](http://okffi-dev1.kapsi.fi/)
 
-Documentation will be linked here once the information is on the getyourdata repo. 
-
-
+Development server documentation can be found in GitHub [here](https://github.com/sakset/getyourdata/blob/master/docs/DEV_SERVER.md). Development also happens in the same repository: [https://github.com/sakset/getyourdata/](https://github.com/sakset/getyourdata/)
