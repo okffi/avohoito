@@ -14,6 +14,16 @@ Language of choice is English, for fast documentation Finnish is OK if the other
 * Slack [https://okffi.slack.com/messages/sysadmin](https://okffi.slack.com/messages/sysadmin)
 * User rights request form [http://bit.ly/okffi_user_rights](http://bit.ly/okffi_user_rights)
 
+# Fall 2016 updates
+
+This update overrides anything documented below.
+
+OKFFI is moving its hosting services from Saima to Kapsi. Therefore any new services should be set up on Kapsi servers, either okffi-dev1 or okffi-prod1. New accounts or services to Saima servers are not granted except in special cases.
+
+New domains are registered through our domain service provider Louhi. Information needed to register a domain: domain name, project or workgroup that pays for the domain, what services need to be set up for the domain.
+
+# Documentation until summer 2016
+
 ## Main Production Server AVOHOITO
 avohoito.okf.fi
 159.255.193.67
