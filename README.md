@@ -129,25 +129,6 @@ Wordpress multisite has been installed into /var/www/okf/blog. It is visible on 
 You may request a blog to administer. It can be given a subdomain or domain controlled by OKFFI, or it can be assigned a domain owned by you.
 Themes and plugins are installed by superadmins. Contact sysadmin@okf.fi if you need these.
 
-### Nagios monitoring
-
-Running at address [http://status.okf.fi](http://status.okf.fi)
-You can see the status with account "vieras". Ask the password from OKFFI core.
-To gain more access, add a username/password combination for yourself.
-Use the same username you have for shell access, and also use that as the contact name in Nagios configurations.
-
-`htpasswd /etc/nagios3/htpasswd.users USERNAME`
-
-To add or modify monitored services, add and edit service definitions in
-
-`/etc/nagios3/conf.d/okffi/`
-
-and run
-
-`service nagios3 reload`
-
-To get notifications of service outages, add yourself to the contacts configuration and add you as the manager for appropriate services.
-
 ## Applications
 
 ### IRC
