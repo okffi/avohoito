@@ -49,37 +49,6 @@ ECDSA key fingerprint is SHA256:DUCWr4Uwms82/Z+H3wh9sRuL8qAM8N7cXKmOrkbbe08.
 Domains are managed mainly through Louhi (domain yearly fees). DNS services for domains may be
 in Louhi or Kapsi.
 
-The following domains are in our DNS management (updated June 2015).
-
-* Directed mainly to avohoito:
-* avoindemokratia.fi, .net, .com
-* avointieto.fi
-* datademo.fi
-* datakoulu.fi
-* hack4.fi
-* koodiaapinen.fi
-* ofc.fi, openfinlandchallenge.fi, openfinlandchallenge.com
-* okf.fi
-* okfn.fi
-* ckan.okf.fi
-
-* Directed to tietopyynto:
-* tietopyynto.fi
-* tietopyynto.okf.fi
-
-* Directed to 159.255.196.4:
-* sujuvuusnavigaattori.fi, .net, .org, .com
-
-* Not directed anywhere:
-* opensauna.fi
-* omadata.fi
-
-Some services are merely routed through our server and go to another service:
-
-* **datakoulu.fi: **[http://fi.okfn.org/datakoulu/](http://fi.okfn.org/datakoulu/)
-* **avoindemokratia.fi: **[http://fi.okfn.org/avoin-demokratia-esimerkit/](http://fi.okfn.org/avoin-demokratia-esimerkit/) **(**avoindemokratia.com, avoindemokratia.net)
-* **okf.fi:** uses the lessn service for shortlinks. In case of an unidentified shortlink, merely redirects to [http://fi.okfn.org/](http://fi.okfn.org/) which is our main web site, hosted by OKFN.
-
 Acquisition of new domains:
 
 1. Check that the domain name is free and that the name does not appear in any trademark or company registers. [https://domain.fi/info/index/tietoa/useinkysytytkysymykset.html#312-NjNhOWYwZWE3YmI5ODA1MDc5NmI2NDllODU0ODE4NDU$61$-NXhyWmV6UTY5-0-aeFa6lBb2-aeFaSHQXc](More information for .fi domains.) If you're happy with a subdomain, in the form of example.okf.fi, that can be done more easily and without cost.
