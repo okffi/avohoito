@@ -10,7 +10,7 @@ Language of choice is English, for fast documentation Finnish is OK if the other
 # 0. Basic Info
 * This document: [http://okf.fi/server](http://okf.fi/server)
 * Sysadmin page: [http://okf.fi/sysadmin/](http://fi.okfn.org/sysadmin/)
-* Contact email: [sysadmin@okf.fi](mailto:sysadmin@okf.fi)
+* Contact email: [sysadmin@okf.fi](mailto:sysadmin@okf.fi) or #sysadmin channel in Slack
 * Slack [https://okffi.slack.com/messages/sysadmin](https://okffi.slack.com/messages/sysadmin)
 * User rights request form [http://bit.ly/okffi_user_rights](http://bit.ly/okffi_user_rights)
 
