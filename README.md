@@ -115,7 +115,9 @@ Folders served by apache2 are mainly in /var/www.
 
 New virtual hosts are set up in folder /etc/apache2/sites-available, by copying an existing configuration and modifying appropriately. A new site called "NAME.conf" is taken into use like this:
 
-1. `a2ensite NAME` enables the new site configuration in Apache2 (you can of course manually symlink if you prefer)
+0. Use existing confs as templates when creating your own. Especially if you're making a new wordpress blog into our multisite environment, copy one of the existing ones and change the server name and log files.
+
+1. `a2ensite NAME` enables the new site configuration in Apache2.
 
 2. `apache2ctl -t` checks that the configuration syntax is correct. **Remember to do this, since an invalid configuration file can shutdown the entire web server!**
 
@@ -123,11 +125,25 @@ New virtual hosts are set up in folder /etc/apache2/sites-available, by copying 
 
 If something goes wrong, do something like `a2dissite NAME` and `service apache2 restart` to get back to the preceding situation, so that the possible errors in your site configuration are out of the way.
 
+4. If you need https connections, run `certbot` and choose your new site from the list. After certbot has done its thing, reload Apache.
+
 ### Blog service, Wordpress network/multisite: http://blog.okf.fi
 
 Wordpress multisite has been installed into /var/www/okf/blog. It is visible on the web at [http://blog.okf.fi](http://blog.okf.fi).
 You may request a blog to administer. It can be given a subdomain or domain controlled by OKFFI, or it can be assigned a domain owned by you.
 Themes and plugins are installed by superadmins. Contact sysadmin@okf.fi if you need these.
+
+#### Administering the blogs
+
+Administration interface can be found at https://okffi-prod1.kapsi.fi/wp-admin/. You should have an account. Contact sysadmin if you need one.
+
+Creation of new blogs happens like so:
+
+1. Ask sysadmin to activate the domain or subdomain you want. These take 3-5 work days to complete, so be early.
+2. Sysadmin will create a new Wordpress site for you and add you as the initial admin.
+3. The site will run initially at address okffi-prod1.kapsi.fi/something
+4. When the domain or subdomain DNS is set up, sysadmin can move the site to its final address. This happens by adding the domain to Apache configuration (see above), and then going to https://okffi-prod1.kapsi.fi/wp-admin/network/sites.php and changing the "Site Address (URL)" field to the new domain. If https is enabled, use https in the URL.
+5. If the site has been extensively developed in its temporary domain, it may be necessary to run Velvet Blues tool in that site's dashboard to update old URLs to new ones.
 
 ## Applications
 
