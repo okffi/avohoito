@@ -177,6 +177,11 @@ URL shorterner. Access it at [http://okf.fi/-](http://okf.fi/-)
 
 User name and password are given to people who need to create okf.fi short urls.
 
+### Discourse
+
+Discourse is installed to serve at address discussion.digirights.info.
+Apache2 site has been configured to reverse proxy the Docker container that runs on port 3001 on the same server.
+Docker installation is at /data/discourse
 
 ### Data web server - http://data.okf.fi (4/2018: NOT ENABLED)
 
