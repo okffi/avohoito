@@ -55,7 +55,7 @@ Acquisition of new domains:
 
 2. Contact [sysadmin@okf.fi](mailto:sysadmin@okf.fi) with the request, listing the domains you need, and which project will pay for the costs. Finnish .fi domains cost 50€ for 5 years, international domains cost $15/year (prices may change). Also let us know where the domain's website should be. We can host Wordpress easily, other sites with some setup effort, and we can point to existing outside servers as well.
 
-# Instructions for adding new sercvices
+# Instructions for adding new services
 
 New services may be set up by members of OKFFI. Email the following info to sysadmin@okf.fi:
  - Service name
@@ -127,9 +127,9 @@ If something goes wrong, do something like `a2dissite NAME` and `service apache2
 
 4. If you need https connections, run `certbot` and choose your new site from the list. After certbot has done its thing, reload Apache.
 
-### Blog service, Wordpress network/multisite: http://blog.okf.fi
+### Blog service, Wordpress network/multisite
 
-Wordpress multisite has been installed into /var/www/okf/blog. It is visible on the web at [http://blog.okf.fi](http://blog.okf.fi).
+Wordpress multisite has been installed into /var/www/okf/blog.
 You may request a blog to administer. It can be given a subdomain or domain controlled by OKFFI, or it can be assigned a domain owned by you.
 Themes and plugins are installed by superadmins. Contact sysadmin@okf.fi if you need these.
 
@@ -142,7 +142,7 @@ Creation of new blogs happens like so:
 1. Ask sysadmin to activate the domain or subdomain you want. These take 3-5 work days to complete, so be early.
 2. Sysadmin will create a new Wordpress site for you and add you as the initial admin.
 3. The site will run initially at address okffi-prod1.kapsi.fi/something
-4. When the domain or subdomain DNS is set up, sysadmin can move the site to its final address. This happens by adding the domain to Apache configuration (see above), and then going to https://okffi-prod1.kapsi.fi/wp-admin/network/sites.php and changing the "Site Address (URL)" field to the new domain. If https is enabled, use https in the URL.
+4. When the domain or subdomain DNS is set up, sysadmin can move the site to its final address. This happens by adding the domain to Apache configuration (see above), then setting up the domain mapping at http://okffi-prod1.kapsi.fi/wp-admin/network/settings.php?page=dm_domains_admin, and then going to https://okffi-prod1.kapsi.fi/wp-admin/network/sites.php and changing the "Site Address (URL)" field to the new domain. If https is enabled, use https in the URL.
 5. If the site has been extensively developed in its temporary domain, it may be necessary to run Velvet Blues tool in that site's dashboard to update old URLs to new ones.
 
 ## Applications
