@@ -145,6 +145,12 @@ Creation of new blogs happens like so:
 4. When the domain or subdomain DNS is set up, sysadmin can move the site to its final address. This happens by adding the domain to Apache configuration (see above), then setting up the domain mapping at http://okffi-prod1.kapsi.fi/wp-admin/network/settings.php?page=dm_domains_admin, and then going to https://okffi-prod1.kapsi.fi/wp-admin/network/sites.php and changing the "Site Address (URL)" field to the new domain. If https is enabled, use https in the URL.
 5. If the site has been extensively developed in its temporary domain, it may be necessary to run Velvet Blues tool in that site's dashboard to update old URLs to new ones.
 
+### Web analytics
+
+We use Mamoto (formerly Piwik) for http analytics. The analytics run in https://www.okf.fi/analytics/
+
+To get an account, contact sysadmins or an existing Mamoto superuser.
+
 ## Applications
 
 ### IRC
