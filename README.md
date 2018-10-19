@@ -183,6 +183,22 @@ URL shorterner. Access it at [http://okf.fi/-](http://okf.fi/-)
 
 User name and password are given to people who need to create okf.fi short urls.
 
+### Pass
+
+Selected passwords are stored in a command-line encrypted password manager.
+To access the passwords, you need sudo rights on okffi-prod1, and you need to have the GPG passphrase.
+This passphrase is only given to sysadmins and core employees. If others need these passwords, they are
+given upon deliberation by these individuals. Contact sysadmins for any passwords you may need.
+
+Quick instructions:
+1. Login to okffi-prod1
+2. `sudo -i` to become root
+3. `pass ls` to see a list of what is stored
+4. `pass show [something]` to see a password; you will be prompted for the GPG passphrase
+
+More info: https://www.passwordstore.org/
+
+
 ### Discourse
 
 Discourse is installed to serve at address discussion.digirights.info.
