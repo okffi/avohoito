@@ -9,11 +9,14 @@ Language of choice is English, for fast documentation Finnish is OK if the other
 
 # 0. Basic Info
 * This document: [http://okf.fi/server](http://okf.fi/server)
-* Sysadmin page: [http://okf.fi/sysadmin/](http://fi.okfn.org/sysadmin/)
 * Contact email: [sysadmin@okf.fi](mailto:sysadmin@okf.fi) or #sysadmin channel in Slack
 * Slack [https://okffi.slack.com/messages/sysadmin](https://okffi.slack.com/messages/sysadmin)
-* User rights request form [http://bit.ly/okffi_user_rights](http://bit.ly/okffi_user_rights)
+* Trello board for tickets [https://trello.com/b/N6WFJ19k/okfi-sysadmin](https://trello.com/b/N6WFJ19k/okfi-sysadmin)
 
+Whenever you need to contact sysadmin for a certain purpose, you can
+* reach out in slack #sysadmin channel (especially if you need to discuss something)
+* send a task for sysadmins to do by adding it as a card to Trello
+* send email
 
 ## Kapsi servers
 
