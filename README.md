@@ -270,5 +270,14 @@ $ `docker start solr db ckan`
 
 * * *
 
+# 3. Emails
+
+okf.fi email aliases are available for people who need them.
+
+## Admin instructions
+Email alias administration is done by ssh to lakka.kapsi.fi with okffi account, and editing one of these files:
+
+* ~/.aliases/okf.fi
+* ~/.aliases/mydata.org
 
 
