@@ -283,4 +283,8 @@ Email alias administration is done by ssh to lakka.kapsi.fi with okffi account, 
 * ~/.aliases/okf.fi
 * ~/.aliases/mydata.org
 
+# 2.c. Installed services and application (GETYOURDATA)
 
+### GetYourData development server [http://okffi-dev1.kapsi.fi/](http://okffi-dev1.kapsi.fi/)
+
+Development server documentation can be found in GitHub [here](https://github.com/sakset/getyourdata/blob/master/docs/DEV_SERVER.md). Development also happens in the same repository: [https://github.com/sakset/getyourdata/](https://github.com/sakset/getyourdata/)
