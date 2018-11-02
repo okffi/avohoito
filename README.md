@@ -130,6 +130,12 @@ If something goes wrong, do something like `a2dissite NAME` and `service apache2
 
 4. If you need https connections, run `certbot` and choose your new site from the list. After certbot has done its thing, reload Apache.
 
+### https certificates
+
+EFF's Let's Encrypt is used. Https certificates are therefore free to use.
+Use command `certbot` as superuser to add a certificate to any new configured domain.
+A cron job runs every week to automatically renew all certificates.
+
 ### Blog service, Wordpress network/multisite
 
 Wordpress multisite has been installed into /var/www/okf/blog.
