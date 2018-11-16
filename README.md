@@ -248,7 +248,7 @@ Technically, the service is done using perl, and is located in /var/www/data/gis
 
 nginx proxies to apache, which uses mod_perl to call the service.
 
-### Rahankeräysrekisteri
+### Rahankeräysrekisteri (12/2018: NOT ENABLED)
 
 1. asennettu Apache CouchDB 1.5.0 ja supervisor + tarvittavat lisäpaketit
 2. asennettu rahankeräysrekisteri-sovellus hakemistoon /home/warmaster/WhipAroundRegistryEnvironment
@@ -257,7 +257,7 @@ nginx proxies to apache, which uses mod_perl to call the service.
 5. muokattu Apache2 lataamaan proxy_balancer moduuli
 6. lisätty Apache2 virtual_host konfiguraatio domaineille rahankeraysrekisteri.fi ja rahankeräysrekisteri.fi
 
-### CKAN / Datacatalog with datastore
+### CKAN / Datacatalog with datastore (12/2018: NOT ENABLED)
 
 All documentation, discussion and issues in [https://github.com/okffi/katalogi](https://github.com/okffi/katalogi)
 [http://ckan.okf.fi](http://ckan.okf.fi)
