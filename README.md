@@ -124,9 +124,9 @@ New virtual hosts are set up in folder /etc/apache2/sites-available, by copying 
 
 2. `apache2ctl -t` checks that the configuration syntax is correct. **Remember to do this, since an invalid configuration file can shutdown the entire web server!**
 
-3. `service apache2 reload` loads the new configuration.
+3. `systemctl reload apache2` loads the new configuration.
 
-If something goes wrong, do something like `a2dissite NAME` and `service apache2 restart` to get back to the preceding situation, so that the possible errors in your site configuration are out of the way.
+If something goes wrong, do something like `a2dissite NAME` and `systemctl reload apache2` to get back to the preceding situation, so that the possible errors in your site configuration are out of the way.
 
 4. If you need https connections, run `certbot` and choose your new site from the list. After certbot has done its thing, reload Apache.
 
