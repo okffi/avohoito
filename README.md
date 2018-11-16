@@ -279,11 +279,9 @@ $ `docker start solr db ckan`
 
 * * *
 
-# 2.b. Installed services and application (GETYOURDATA)
+# 2.b. Installed services and application (okffi-dev1)
 
-### GetYourData development server [http://okffi-dev1.kapsi.fi/](http://okffi-dev1.kapsi.fi/)
-
-Development server documentation can be found in GitHub [here](https://github.com/sakset/getyourdata/blob/master/docs/DEV_SERVER.md). Development also happens in the same repository: [https://github.com/sakset/getyourdata/](https://github.com/sakset/getyourdata/)
+None documented at the moment.
 
 # 3. Emails
 
