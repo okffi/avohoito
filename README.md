@@ -85,15 +85,25 @@ For each service there will be service-specific system account (if needed) and s
 
 Components are brought to production by installing from public sources with public installation instructions. If any of these do not exist, service-specific Github repos are built before transferring services to production. It is advisable to develop and test new services with configuration management and batch deployment in mind.
 
+## Disk space
+
+The root file system is limited in size, so any large installations should be done in the /data file system.
+
 ## Basic services (installed)
 
-### Firewall
+### Security
+
+#### Firewall
 
 iptables
 
 firewall with ufw
 
-### Acct
+#### Apparmor
+
+Apparmor is used in enforce mode for apache2 and other processes. Do note this when adding new web services, since new capabilities will be initially blocked. Use "aa-complain apache2" to temporarily disable enforcement, then operate the new service sufficiently, then use "aa-logprof" to approve new capabilities, and finally "aa-enforce apache" to restablish apparmor protection.
+
+#### Acct
 
 acct accounting logs all user logins, issued commands, and resource usage. In case of tracking down who caused a problem, this can be useful. Some key commands to try (as root):
 
@@ -114,7 +124,7 @@ would run the "git pull" command in folder /var/www/okf/FOO every day, at 15 pas
 
 Apache2 is the main web server.
 
-Folders served by apache2 are mainly in /var/www.
+Folders served by apache2 are mainly in /var/www. Some large installations are in /data/www and others may run from /home folders.
 
 New virtual hosts are set up in folder /etc/apache2/sites-available, by copying an existing configuration and modifying appropriately. A new site called "NAME.conf" is taken into use like this:
 
@@ -156,7 +166,7 @@ Creation of new blogs happens like so:
 
 ### Web analytics
 
-We use Mamoto (formerly Piwik) for http analytics. The analytics run in https://www.okf.fi/analytics/
+We use Mamoto (formerly Piwik) for http analytics on some of our sites. Analytics needs to be enabled separately for each site where analytics are needed.. The analytics run in https://www.okf.fi/analytics/
 
 To get an account, contact sysadmins or an existing Mamoto superuser.
 
