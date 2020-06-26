@@ -75,7 +75,7 @@ New services may be set up by members of OKFFI. Email the following info to sysa
 
 Order a shell account http://okf.fi/sysadmin
 
-Install the services. 
+Install the services.
 
 Inform progress and issues through Slack
 
@@ -120,7 +120,7 @@ Essentially: by executing "crontab -e" you can edit your scheduled commands. A n
 `15 3 * * * cd /var/www/okf/data/FOO; git pull`
 would run the "git pull" command in folder /var/www/okf/FOO every day, at 15 past 3 in the morning.
 
-### Web server: apache2 
+### Web server: apache2
 
 Apache2 is the main web server.
 
@@ -250,9 +250,9 @@ http://api.okf.fi/gis/1/geocode.json
 
 [http://api.okf.fi/console/](http://data.okf.fi/console/)
 
-[http://api.okf.fi/gis/1/geocode.json?address=Siltasaarenkatu+15](http://data.okf.fi/gis/1/geocode.json?address=Siltasaarenkatu+15) 
+[http://api.okf.fi/gis/1/geocode.json?address=Siltasaarenkatu+15](http://data.okf.fi/gis/1/geocode.json?address=Siltasaarenkatu+15)
 
-[http://api.okf.fi/gis/1/geocode.json?lat=60.187058&lng=24.961563](http://data.okf.fi/gis/1/geocode.json?lat=60.187058&lng=24.961563) 
+[http://api.okf.fi/gis/1/geocode.json?lat=60.187058&lng=24.961563](http://data.okf.fi/gis/1/geocode.json?lat=60.187058&lng=24.961563)
 
 Technically, the service is done using perl, and is located in /var/www/data/gis/
 
@@ -287,6 +287,62 @@ If the containers are not running, they can be started with
 
 $ `docker start solr db ckan`
 
+### Tietopyynto.fi
+
+Python Django application based on Froide.
+
+Customisations and settings files live in `/home/tietopyynto/tietopyynto-theme`.
+Runs over mod_wsgi and Apache, using Apache config file at
+`/etc/apache2/sites-available/013_tietopyynto_ssl.conf`.
+
+Python virtualenv lives in `/home/tietopyynto/tietopyynto-env-new`
+
+Celery is started up on system boot by `/etc/init.d/celeryd`. It calls the
+script `/home/tietopyynto/tietopyynto-theme/run_celery.sh`. You can shut down
+the running Celery process by killing the process number stored in
+`/home/tietopyynto/tietopyynto-theme/celeryd.pid`. Give it some time to wind
+down.
+
+Logs for various related services are collected in
+`/home/tietopyynto/tietopyynto-theme/tietopyynto_fi/logs/`.
+
+Uses PostgreSQL database `tietopyyntov2`.
+
+Uses Dovecot IMAP mailbox (localhost:143) with user `tietopyynto-mail`.
+
+You can run Django shell or management commands with  `manage.py` by
+setting the following environment variables:
+
+```
+$ export DJANGO_SETTINGS_MODULE=tietopyynto_fi.custom_settings
+$ export DJANGO_CONFIGURATION=TietopyyntoProd
+```
+
+#### Troubleshooting tips
+
+The typical problem this service has is with receiving mail, which has
+by far the most moving parts in the system. Here's a checklist on
+which parts can go bad.
+
+- Check that Celery is running and capable of accepting tasks. You can
+  monitor the celery.log file in the abovementioned logs directory and
+  look for the once-a-minute fetch_mail task. Beat process should be
+  waking up to dispatch the task every minute and MainProcess should
+  subsequently acknowledge and accept it.
+  - Make sure `settings.CELERY_TASK_ALWAYS_EAGER` is `False` (`from django.conf import settings` in Django shell)
+- Check that the IMAP mailbox is working and accepting new mail. Try sending
+  mail to it and see if you get bounces. You can peek inside the mailbox
+  with a mail app, or with telnet and raw IMAP interaction. Get the username
+  and password from the config file:
+  - `$ telnet localhost 143`
+  - `a login tietopyynto-mail <pw>`
+  - `b select inbox`
+  - `c search on "26-jun-2020"` <use current day to check for new mail>
+  - `d fetch <latest result number from above> "(BODY.PEEK[HEADER])"` It's important to use .PEEK, otherwise the mail is marked as read and Froide won't read it again...
+- Check Celery's queue broker status:
+  - `# rabbitmqctl list_queues name messages consumers`
+  - It should have no pending queued messages and one consumer each
+
 * * *
 
 # 2.b. Installed services and application (okffi-dev1)
@@ -302,4 +358,3 @@ Email alias administration is done by ssh to lakka.kapsi.fi with okffi account, 
 
 * ~/.aliases/okf.fi
 * ~/.aliases/mydata.org
-
